@@ -236,7 +236,7 @@ void neumann_loop_2d3d(const MultiLevelProblem *    ml_prob,
 
 
 double GetExactSolutionValue(const std::vector < double >& x) {
-    return 0.;
+    return 24. * x[0] * (-0.416667 + x[0] * x[0] + x[1] * x[1] );
 }
 
 void GetExactSolutionGradient(const std::vector < double >& x, vector < double >& solGrad) {
@@ -246,9 +246,9 @@ void GetExactSolutionGradient(const std::vector < double >& x, vector < double >
 double semiannulus__laplacian__rhs(const std::vector < double >& x) {
   
     double r2 = x[0] * x[0] + x[1] * x[1];
-    double temp = x[0] * (8. - 4.5 / (sqrt(r2)));
-    //double temp = (4. - 1.5 / (sqrt(r2)));
-  return temp;
+
+    
+      return   x[0] * (r2 - 1. ) * (.25 - r2);
 }
 
 

@@ -63,21 +63,16 @@ bool semiannulus__laplacian__bc(const MultiLevelProblem * ml_prob, const std::ve
 
 double semiannulus__laplacian__rhs(const std::vector < double >& x) {
   
-    double r2 = x[0] * x[0] + x[1] * x[1];
-    double temp = x[0] * (8. - 4.5 / (sqrt(r2)));
-    //double temp = (4. - 1.5 / (sqrt(r2)));
-  return temp;
+    
 
-//   return - 20. * x[0] * (-0.45 + x[0] * x[0] - 0.6 * x[1] * x[1] );
+   return 24. * x[0] * (-0.416667 + x[0] * x[0] + x[1] * x[1] );
     
 }
 
 double semiannulus__laplacian__true_solution(const std::vector < double >& x) {
     
      double r2 = x[0] * x[0] + x[1] * x[1];
-
-     return   x[0] * (sqrt(r2) - 1. ) * (.5 - sqrt(r2) );
-//      return   x[0] * (r2 - 1. ) * (.25 - r2);
+      return   x[0] * (r2 - 1. ) * (.25 - r2);
 }
 
 
